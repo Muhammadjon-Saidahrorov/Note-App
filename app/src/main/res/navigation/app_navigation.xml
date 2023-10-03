@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_navigation"
+    app:startDestination="@id/homeScreen">
+
+    <fragment
+        android:id="@+id/homeScreen"
+        android:name="uz.gita.noteappmn.presentation.screen.home.HomeScreen"
+        android:label="Notes"
+        tools:layout="@layout/screen_home">
+        <action
+            android:id="@+id/action_homeScreen_to_addNoteScreen"
+            app:destination="@id/addNoteScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_trashScreen"
+            app:destination="@id/trashScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_infoScreen"
+            app:destination="@id/infoScreen" />
+        <action
+            android:id="@+id/action_homeScreen_to_createScreen"
+            app:destination="@id/createScreen" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/trashScreen"
+        android:name="uz.gita.noteappmn.presentation.screen.trash.TrashScreen"
+        android:label="Trash"
+        tools:layout="@layout/screen_trash" />
+    <fragment
+        android:id="@+id/addNoteScreen"
+        android:name="uz.gita.noteappmn.presentation.screen.addnote.AddNoteScreen"
+        android:label="Add Note"
+        tools:layout="@layout/screen_add_note">
+        <argument
+            android:name="noteP"
+            android:defaultValue="@null"
+            app:argType="uz.gita.noteappmn.data.model.NoteData"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/infoScreen"
+        android:name="uz.gita.noteappmn.presentation.screen.info.InfoScreen"
+        android:label="Info"
+        tools:layout="@layout/screen_info" />
+    <fragment
+        android:id="@+id/lockScreen"
+        android:name="uz.gita.noteappmn.presentation.screen.lock.LockScreen"
+        android:label="Locks"
+        tools:layout="@layout/screen_lock" >
+        <action
+            android:id="@+id/action_lockScreen_to_addNoteScreen"
+            app:destination="@id/addNoteScreen" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="uz.gita.noteappmn.presentation.screen.login.LoginScreen"
+        android:label="Locks"
+        tools:layout="@layout/login_screen">
+        <action
+            android:id="@+id/action_loginScreen_to_lockScreen"
+            app:destination="@id/lockScreen"
+            app:popUpTo="@id/homeScreen"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_loginScreen_to_createScreen"
+            app:destination="@id/createScreen"
+            app:popUpTo="@id/homeScreen"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/createScreen"
+        android:name="uz.gita.noteappmn.presentation.screen.create.CreateScreen"
+        android:label="Create Password"
+        tools:layout="@layout/create_screen">
+        <action
+            android:id="@+id/action_createScreen_to_loginScreen"
+            app:destination="@id/loginScreen"
+            app:popUpTo="@id/homeScreen"
+            app:popUpToInclusive="false" />
+        <action
+            android:id="@+id/action_createScreen_to_lockScreen"
+            app:destination="@id/lockScreen"
+            app:popUpTo="@id/homeScreen"
+            app:popUpToInclusive="false" />
+    </fragment>
+</navigation>
